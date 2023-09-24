@@ -1,4 +1,4 @@
-export default function isValidData(req,res,next)
+export function isValidData(req,res,next)
 {
     let data = req.body;
 
@@ -12,6 +12,18 @@ export default function isValidData(req,res,next)
     {
 
         res.status(400).send("Неверные данные")
+    }
+
+    next();
+}
+
+export function isValidName(req,res,next)
+{
+    let data = req.body;
+
+    if (data.name===undefined||!data.name)
+    {
+        res.status(400).send("Невернные данные");
     }
 
     next();
