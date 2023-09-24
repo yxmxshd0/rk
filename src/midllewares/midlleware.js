@@ -28,3 +28,22 @@ export function isValidName(req,res,next)
 
     next();
 }
+
+export function IsValidContent (req,res,next)
+{
+    let data = req.headers;
+    if (req.method!=="GET")
+    {
+        if (data['content-type']!=="application/json")
+        {
+            res.status(400).send("Требуется JSON")
+        }
+    }
+
+    next();
+}
+
+export function BadUrl (req,res, next)
+{
+    res.status(400).send("Bad URL")
+}
